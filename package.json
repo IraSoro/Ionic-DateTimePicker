@@ -2,7 +2,7 @@
   "name": "my-ionic-package",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.tsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/IraSoro/my-ionic-package#readme",
   "dependencies": {
-    "@ionic/react": "^6.6.2"
+    "@ionic/react": "^6.6.2",
+    "typescript": "^5.0.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.28"
