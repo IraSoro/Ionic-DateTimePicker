@@ -1,0 +1,25 @@
+{
+  "name": "my-ionic-package",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IraSoro/my-ionic-package.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IraSoro/my-ionic-package/issues"
+  },
+  "homepage": "https://github.com/IraSoro/my-ionic-package#readme",
+  "dependencies": {
+    "@ionic/react": "^6.6.2"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.28"
+  }
+}
