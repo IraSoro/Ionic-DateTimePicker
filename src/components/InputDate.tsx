@@ -16,7 +16,7 @@ import './InputValue.css';
 interface PropsInput {
     value: string;
     setValue: (newValue: string) => void;
-    id: string;
+    inputID: string;
     color?: string;
     locale?: string;
     isConvert?: boolean;
@@ -60,14 +60,14 @@ const InputDate = (props: PropsInput) => {
     }
 
     return (
-        <IonItem id={"choose-date-"+props.id}>
+        <IonItem id={"choose-date-"+props.inputID}>
             <IonLabel color={getColor()}>{getTitle()}</IonLabel>
             <IonIcon slot="end" color={getColor()} size="small" icon={calendarClear}></IonIcon>
             <p>{date}</p>
             <IonModal
                 id="choose-datetime-modal"
                 ref={dateModal}
-                trigger={"choose-date-"+props.id}
+                trigger={"choose-date-"+props.inputID}
             >
                 <IonDatetime
                     ref={datetime}

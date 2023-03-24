@@ -3,6 +3,7 @@ import './InputValue.css';
 interface PropsInput {
     value: string;
     setValue: (newValue: string) => void;
+    inputID: string;
     color?: string;
     locale?: string;
     isConvert?: boolean;
