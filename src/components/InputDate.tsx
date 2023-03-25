@@ -13,7 +13,7 @@ import { calendarClear } from 'ionicons/icons';
 import './InputValue.css';
 
 
-interface PropsInput {
+interface InputDateProps {
     value: string;
     setValue: (newValue: string) => void;
     inputID: string;
@@ -23,7 +23,7 @@ interface PropsInput {
     title?: string;
 }
 
-const InputDate = (props: PropsInput) => {
+const InputDate = (props: InputDateProps) => {
 
     const dateModal = useRef<HTMLIonModalElement>(null);
     const [date, setDate] = useState(props.value);

@@ -13,7 +13,7 @@ import { timeSharp } from 'ionicons/icons';
 import './InputValue.css';
 
 
-interface PropsInput {
+interface InputTimeProps {
     value: string;
     setValue: (newValue: string) => void;
     inputID: string;
@@ -23,7 +23,7 @@ interface PropsInput {
     title?: string;
 }
 
-const InputTime = (props: PropsInput) => {
+const InputTime = (props: InputTimeProps) => {
 
     const timeModal = useRef<HTMLIonModalElement>(null);
     const [time, setTime] = useState(props.value);

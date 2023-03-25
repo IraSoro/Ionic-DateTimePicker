@@ -1,6 +1,6 @@
 /// <reference types="react" />
 import './InputValue.css';
-interface PropsInput {
+interface InputTimeProps {
     value: string;
     setValue: (newValue: string) => void;
     inputID: string;
@@ -9,5 +9,5 @@ interface PropsInput {
     isConvert?: boolean;
     title?: string;
 }
-declare const InputTime: (props: PropsInput) => JSX.Element;
+declare const InputTime: (props: InputTimeProps) => JSX.Element;
 export default InputTime;
