@@ -4,9 +4,9 @@ interface InputDateProps {
     value: string;
     setValue: (newValue: string) => void;
     inputID: string;
+    funConvert?: (date: string) => string;
     color?: string;
     locale?: string;
-    isConvert?: boolean;
     title?: string;
 }
 declare const InputDate: (props: InputDateProps) => JSX.Element;
