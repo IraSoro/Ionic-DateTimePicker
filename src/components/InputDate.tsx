@@ -17,9 +17,9 @@ interface InputDateProps {
     value: string;
     setValue: (newValue: string) => void;
     inputID: string;
+    funConvert?: (date: string) => string;
     color?: string;
     locale?: string;
-    isConvert?: boolean;
     title?: string;
 }
 
@@ -60,14 +60,14 @@ const InputDate = (props: InputDateProps) => {
     }
 
     return (
-        <IonItem id={"choose-date-"+props.inputID}>
+        <IonItem id={"choose-date-" + props.inputID}>
             <IonLabel color={getColor()}>{getTitle()}</IonLabel>
             <IonIcon slot="end" color={getColor()} size="small" icon={calendarClear}></IonIcon>
             <p>{date}</p>
             <IonModal
                 id="choose-datetime-modal"
                 ref={dateModal}
-                trigger={"choose-date-"+props.inputID}
+                trigger={"choose-date-" + props.inputID}
             >
                 <IonDatetime
                     ref={datetime}
@@ -77,12 +77,11 @@ const InputDate = (props: InputDateProps) => {
                     value={props.value}
                     onIonChange={(e) => {
                         if (e.detail.value) {
-                            if (props.isConvert) {
-                                console.log("true");
-                                setDate(e.detail.value.toString().slice(0, 10));
-                                props.setValue(e.detail.value.toString().slice(0, 10));
+                            if (props.funConvert) {
+                                const value: string = props.funConvert(e.detail.value.toString());
+                                setDate(value);
+                                props.setValue(value);
                             } else {
-                                console.log("false");
                                 setDate(e.detail.value.toString());
                                 props.setValue(e.detail.value.toString());
                             }

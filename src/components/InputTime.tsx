@@ -17,9 +17,9 @@ interface InputTimeProps {
     value: string;
     setValue: (newValue: string) => void;
     inputID: string;
+    funConvert?: (date: string) => string;
     color?: string;
     locale?: string;
-    isConvert?: boolean;
     title?: string;
 }
 
@@ -76,11 +76,11 @@ const InputTime = (props: InputTimeProps) => {
                     locale={getLocale()}
                     onIonChange={(e) => {
                         if (e.detail.value) {
-                            if (props.isConvert) {
-                                setTime(e.detail.value.toString().slice(11, 16));
-                                props.setValue(e.detail.value.toString().slice(11, 16));
-                            }
-                            else {
+                            if (props.funConvert) {
+                                const value: string = props.funConvert(e.detail.value.toString());
+                                setTime(value);
+                                props.setValue(value);
+                            } else {
                                 setTime(e.detail.value.toString());
                                 props.setValue(e.detail.value.toString());
                             }
