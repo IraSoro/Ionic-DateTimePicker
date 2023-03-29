@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { timeSharp } from 'ionicons/icons';
+
 import WrappedInput from './WrappedInput';
 
 let id = 0;
@@ -11,13 +12,18 @@ interface InputTimeProps {
     color?: string;
     locale?: string;
     title?: string;
+    icon?: string;
+    sizeIcon?: string;
 }
 
 const InputTime = (props: InputTimeProps) => {
     const [ident] = useState((id++).toString());
+
     const color = props.color ?? "primary";
     const locale = props.locale ?? "en-GB";
     const title = props.title ?? "The time";
+    const sizeIcon = props.sizeIcon ?? "small";
+    const nameIcon = props.icon ?? timeSharp;
 
     return (
         <WrappedInput
@@ -29,7 +35,8 @@ const InputTime = (props: InputTimeProps) => {
             color={color}
             locale={locale}
             title={title}
-            icon={timeSharp}
+            icon={nameIcon}
+            sizeIcon={sizeIcon}
         />
     );
 }

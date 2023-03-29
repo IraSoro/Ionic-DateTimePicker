@@ -12,7 +12,6 @@ import { DatetimePresentation } from "@ionic/core/components";
 
 import './WrappedInput.css';
 
-// добавить размер иконки
 interface WrappedProps {
     value: string;
     setValue: (newValue: string) => void;
@@ -22,6 +21,7 @@ interface WrappedProps {
     locale: string;
     title: string;
     icon: string;
+    sizeIcon: string;
     convertFunc?: (date: string) => string;
 }
 
@@ -30,12 +30,12 @@ const WrappedInput = (props: WrappedProps) => {
 
     const modalRef = useRef<HTMLIonModalElement>(null);
     const datetimeRef = useRef<null | HTMLIonDatetimeElement>(null);
-    const inputRef = useRef<HTMLIonInputElement>(null); // непонятно зачем эта ref
+    const inputRef = useRef<HTMLIonInputElement>(null);
 
     return (
         <IonItem id={props.ID}>
             <IonLabel color={props.color}>{props.title}</IonLabel>
-            <IonIcon slot="end" color={props.color} size="small" icon={props.icon}></IonIcon>
+            <IonIcon slot="end" color={props.color} size={props.sizeIcon} icon={props.icon}></IonIcon>
             <p>{value}</p>
             <IonModal
                 id="choose-datetime-modal"
