@@ -1,100 +1,36 @@
-import { useState, useRef } from 'react';
-import {
-    IonButton,
-    IonItem,
-    IonLabel,
-    IonIcon,
-    IonModal,
-    IonButtons,
-    IonDatetime,
-} from '@ionic/react';
+import { useState } from 'react';
 import { calendarClear } from 'ionicons/icons';
+import WrappedInput from './WrappedInput';
 
-import './InputValue.css';
-
+let id = 0;
 
 interface InputDateProps {
     value: string;
     setValue: (newValue: string) => void;
-    inputID: string;
-    funConvert?: (date: string) => string;
+    convertFunc?: (date: string) => string;
     color?: string;
     locale?: string;
     title?: string;
 }
 
 const InputDate = (props: InputDateProps) => {
-
-    const dateModal = useRef<HTMLIonModalElement>(null);
-    const [date, setDate] = useState(props.value);
-    const datetime = useRef<null | HTMLIonDatetimeElement>(null);
-    const inputDate = useRef<HTMLIonInputElement>(null);
-    const confirmDate = () => {
-        datetime.current?.confirm();
-        dateModal.current?.dismiss(inputDate.current?.value, 'confirm');
-    }
-    const cancelDate = () => {
-        datetime.current?.cancel();
-        dateModal.current?.dismiss(inputDate.current?.value, 'cancel');
-    }
-
-    function getColor() {
-        if (props.color) {
-            return props.color;
-        }
-        return "primary";
-    }
-
-    function getLocale() {
-        if (props.locale) {
-            return props.locale;
-        }
-        return "en-GB";
-    }
-
-    function getTitle() {
-        if (props.title) {
-            return props.title;
-        }
-        return "The date";
-    }
+    const [ident] = useState((id++).toString());
+    const color = props.color ?? "primary";
+    const locale = props.locale ?? "en-GB";
+    const title = props.title ?? "The date";
 
     return (
-        <IonItem id={"choose-date-" + props.inputID}>
-            <IonLabel color={getColor()}>{getTitle()}</IonLabel>
-            <IonIcon slot="end" color={getColor()} size="small" icon={calendarClear}></IonIcon>
-            <p>{date}</p>
-            <IonModal
-                id="choose-datetime-modal"
-                ref={dateModal}
-                trigger={"choose-date-" + props.inputID}
-            >
-                <IonDatetime
-                    ref={datetime}
-                    color={getColor()}
-                    presentation="date"
-                    locale={getLocale()}
-                    value={props.value}
-                    onIonChange={(e) => {
-                        if (e.detail.value) {
-                            if (props.funConvert) {
-                                const value: string = props.funConvert(e.detail.value.toString());
-                                setDate(value);
-                                props.setValue(value);
-                            } else {
-                                setDate(e.detail.value.toString());
-                                props.setValue(e.detail.value.toString());
-                            }
-                        }
-                    }}
-                >
-                    <IonButtons slot="buttons">
-                        <IonButton color={getColor()} onClick={cancelDate}>Cancel</IonButton>
-                        <IonButton color={getColor()} onClick={confirmDate}>Confirm</IonButton>
-                    </IonButtons>
-                </IonDatetime>
-            </IonModal>
-        </IonItem>
+        <WrappedInput
+            value={props.value}
+            setValue={props.setValue}
+            ID={`InputDate-${ident}`}
+            type={"date"}
+            convertFunc={props.convertFunc}
+            color={color}
+            locale={locale}
+            title={title}
+            icon={calendarClear}
+        />
     );
 }
 

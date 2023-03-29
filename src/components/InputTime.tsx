@@ -1,99 +1,36 @@
-import { useState, useRef } from 'react';
-import {
-    IonButton,
-    IonItem,
-    IonLabel,
-    IonIcon,
-    IonModal,
-    IonButtons,
-    IonDatetime,
-} from '@ionic/react';
+import { useState } from 'react';
 import { timeSharp } from 'ionicons/icons';
+import WrappedInput from './WrappedInput';
 
-import './InputValue.css';
-
+let id = 0;
 
 interface InputTimeProps {
     value: string;
     setValue: (newValue: string) => void;
-    inputID: string;
-    funConvert?: (date: string) => string;
+    convertFunc?: (date: string) => string;
     color?: string;
     locale?: string;
     title?: string;
 }
 
 const InputTime = (props: InputTimeProps) => {
-
-    const timeModal = useRef<HTMLIonModalElement>(null);
-    const [time, setTime] = useState(props.value);
-    const onlyTime = useRef<null | HTMLIonDatetimeElement>(null);
-    const inputTime = useRef<HTMLIonInputElement>(null);
-    const confirmTime = () => {
-        onlyTime.current?.confirm();
-        timeModal.current?.dismiss(inputTime.current?.value, 'confirm');
-    }
-    const cancelTime = () => {
-        onlyTime.current?.cancel();
-        timeModal.current?.dismiss(inputTime.current?.value, 'cancel');
-    }
-
-    function getColor() {
-        if (props.color) {
-            return props.color;
-        }
-        return "primary";
-    }
-
-    function getLocale() {
-        if (props.locale) {
-            return props.locale;
-        }
-        return "en-GB";
-    }
-
-    function getTitle() {
-        if (props.title) {
-            return props.title;
-        }
-        return "The time";
-    }
+    const [ident] = useState((id++).toString());
+    const color = props.color ?? "primary";
+    const locale = props.locale ?? "en-GB";
+    const title = props.title ?? "The time";
 
     return (
-        <IonItem id={"choose-time-"+props.inputID}>
-            <IonLabel color={getColor()}>{getTitle()}</IonLabel>
-            <IonIcon slot="end" color={getColor()} size="small" icon={timeSharp}></IonIcon>
-            <p>{time}</p>
-            <IonModal
-                id="choose-datetime-modal"
-                ref={timeModal}
-                trigger={"choose-time-"+props.inputID}
-            >
-                <IonDatetime
-                    ref={onlyTime}
-                    color={getColor()}
-                    presentation="time"
-                    locale={getLocale()}
-                    onIonChange={(e) => {
-                        if (e.detail.value) {
-                            if (props.funConvert) {
-                                const value: string = props.funConvert(e.detail.value.toString());
-                                setTime(value);
-                                props.setValue(value);
-                            } else {
-                                setTime(e.detail.value.toString());
-                                props.setValue(e.detail.value.toString());
-                            }
-                        }
-                    }}
-                >
-                    <IonButtons slot="buttons">
-                        <IonButton color={getColor()} onClick={cancelTime}>Cancel</IonButton>
-                        <IonButton color={getColor()} onClick={confirmTime}>Confirm</IonButton>
-                    </IonButtons>
-                </IonDatetime>
-            </IonModal>
-        </IonItem>
+        <WrappedInput
+            value={props.value}
+            setValue={props.setValue}
+            ID={`InputTime-${ident}`}
+            type={"time"}
+            convertFunc={props.convertFunc}
+            color={color}
+            locale={locale}
+            title={title}
+            icon={timeSharp}
+        />
     );
 }
 
