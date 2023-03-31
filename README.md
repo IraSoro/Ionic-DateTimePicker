@@ -9,13 +9,13 @@ https://irasoro.github.io/example/
 ## Installation
 Using npm:
 
-```
+```shell
 npm install ionic-datetime-input
 ```
 
 ## Usage
 
-```
+```js
 import  {InputDate, InputTime} from 'ionic-datetime-input';
 
 const ExampleComponent = () => {
