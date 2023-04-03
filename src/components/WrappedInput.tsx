@@ -26,8 +26,6 @@ interface WrappedProps {
 }
 
 const WrappedInput = (props: WrappedProps) => {
-    const [value, setValue] = useState(props.value);
-
     const modalRef = useRef<HTMLIonModalElement>(null);
     const datetimeRef = useRef<null | HTMLIonDatetimeElement>(null);
     const inputRef = useRef<HTMLIonInputElement>(null);
@@ -36,7 +34,7 @@ const WrappedInput = (props: WrappedProps) => {
         <IonItem id={props.ID}>
             <IonLabel color={props.color}>{props.title}</IonLabel>
             <IonIcon slot="end" color={props.color} size={props.sizeIcon} icon={props.icon}></IonIcon>
-            <p>{value}</p>
+            <p>{props.value}</p>
             <IonModal
                 id="choose-datetime-modal"
                 ref={modalRef}
@@ -55,7 +53,6 @@ const WrappedInput = (props: WrappedProps) => {
                         const new_value: string = props.convertFunc?.(e.detail.value.toString())
                             ?? e.detail.value.toString();
 
-                        setValue(new_value);
                         props.setValue(new_value);
                     }}
                 >
