@@ -1,8 +1,7 @@
 /// <reference types="react" />
 interface InputDateProps {
-    value: string;
-    setValue: (newValue: string) => void;
-    convertFunc?: (date: string) => string;
+    date: string;
+    setDate: (newValue: string) => void;
     color?: string;
     locale?: string;
     title?: string;

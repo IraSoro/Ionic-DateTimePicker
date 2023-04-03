@@ -11,7 +11,6 @@ interface WrappedProps {
     title: string;
     icon: string;
     sizeIcon: string;
-    convertFunc?: (date: string) => string;
 }
 declare const WrappedInput: (props: WrappedProps) => JSX.Element;
 export default WrappedInput;
