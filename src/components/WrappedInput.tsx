@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import {
     IonButton,
     IonItem,
@@ -22,7 +22,6 @@ interface WrappedProps {
     title: string;
     icon: string;
     sizeIcon: string;
-    convertFunc?: (date: string) => string;
 }
 
 const WrappedInput = (props: WrappedProps) => {
@@ -45,15 +44,15 @@ const WrappedInput = (props: WrappedProps) => {
                     color={props.color}
                     presentation={props.type}
                     locale={props.locale}
-                    value={props.value}
                     onIonChange={(e) => {
                         if (!e.detail.value) {
                             return;
                         }
-                        const new_value: string = props.convertFunc?.(e.detail.value.toString())
-                            ?? e.detail.value.toString();
-
-                        props.setValue(new_value);
+                        if (props.type === "date") {
+                            props.setValue(e.detail.value.toString().slice(0, 10));
+                        } else {
+                            props.setValue(e.detail.value.toString().slice(11, 16));
+                        }
                     }}
                 >
                     <IonButtons slot="buttons">

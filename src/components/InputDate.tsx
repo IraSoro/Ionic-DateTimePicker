@@ -6,9 +6,8 @@ import WrappedInput from './WrappedInput';
 let id = 0;
 
 interface InputDateProps {
-    value: string;
-    setValue: (newValue: string) => void;
-    convertFunc?: (date: string) => string;
+    date: string;
+    setDate: (newValue: string) => void;
     color?: string;
     locale?: string;
     title?: string;
@@ -19,24 +18,17 @@ interface InputDateProps {
 const InputDate = (props: InputDateProps) => {
     const [ident] = useState((id++).toString());
 
-    const color = props.color ?? "primary";
-    const locale = props.locale ?? "en-GB";
-    const title = props.title ?? "The date";
-    const sizeIcon = props.sizeIcon ?? "small";
-    const nameIcon = props.icon ?? calendarClear;
-
     return (
         <WrappedInput
-            value={props.value}
-            setValue={props.setValue}
+            value={props.date}
+            setValue={props.setDate}
             ID={`InputDate-${ident}`}
             type={"date"}
-            convertFunc={props.convertFunc}
-            color={color}
-            locale={locale}
-            title={title}
-            icon={nameIcon}
-            sizeIcon={sizeIcon}
+            color={props.color ?? "primary"}
+            locale={props.locale ?? "en-GB"}
+            title={props.title ?? "The date"}
+            icon={props.icon ?? calendarClear}
+            sizeIcon={props.sizeIcon ?? "small"}
         />
     );
 }
