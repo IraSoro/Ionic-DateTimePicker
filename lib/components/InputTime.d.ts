@@ -7,6 +7,7 @@ interface InputTimeProps {
     title?: string;
     icon?: string;
     sizeIcon?: string;
+    format?: string;
 }
 declare const InputTime: (props: InputTimeProps) => JSX.Element;
 export default InputTime;
