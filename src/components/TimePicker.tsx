@@ -7,7 +7,7 @@ let id = 0;
 
 interface TimeProps {
     time: string;
-    setTime: (newValue: string) => void;
+    onChange: (newValue: string) => void;
     color?: string;
     locale?: string;
     title?: string;
@@ -22,7 +22,7 @@ const TimePicker = (props: TimeProps) => {
     return (
         <WrappedPicker
             value={props.time}
-            setValue={props.setTime}
+            setValue={props.onChange}
             ID={`InputTime-${ident}`}
             type={"time"}
             color={props.color ?? "primary"}

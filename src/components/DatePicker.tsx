@@ -7,7 +7,7 @@ let id = 0;
 
 interface DateProps {
     date: string;
-    setDate: (newValue: string) => void;
+    onChange: (newValue: string) => void;
     color?: string;
     locale?: string;
     title?: string;
@@ -22,7 +22,7 @@ const DatePicker = (props: DateProps) => {
     return (
         <WrappedPicker
             value={props.date}
-            setValue={props.setDate}
+            setValue={props.onChange}
             ID={`InputDate-${ident}`}
             type={"date"}
             color={props.color ?? "primary"}

@@ -1,7 +1,7 @@
 /// <reference types="react" />
 interface TimeProps {
     time: string;
-    setTime: (newValue: string) => void;
+    onChange: (newValue: string) => void;
     color?: string;
     locale?: string;
     title?: string;

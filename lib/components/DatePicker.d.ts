@@ -1,7 +1,7 @@
 /// <reference types="react" />
 interface DateProps {
     date: string;
-    setDate: (newValue: string) => void;
+    onChange: (newValue: string) => void;
     color?: string;
     locale?: string;
     title?: string;
