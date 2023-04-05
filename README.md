@@ -15,28 +15,28 @@ npm install @IraSoro/ionic-datetime-picker
 ## API
 
 For DatePicker:
-| Name     | Type     | Description                                                               | Required | Default         |
-| -------- | -------- | ------------------------------------------------------------------------- | -------- | --------------- |
-| date     | string   | The value of the date.                                                    | true     |                 |
-| onChange | function | function of the form `(newDate: string) => void`. Updates the date value. | true     |                 |
-| color    | string   | The color to use from your application's color palette.                   |          | "primary"       |
-| title    | string   | The text to display to the left of the date.                              |          | "The date"      |
-| locale   | string   | Locale impacts month and day name formatting.                             |          | "en-GB"         |
-| icon     | string   | Specifies which icon to use.                                              |          | calendarOutline |
-| iconSize | string   | Icon size can be "large" or "small".                                      |          | "small"         |
-| format*  | string   | Date formats                                                              |          | "yyyy-MM-dd"    |
+| Name     | Type     | Description                                                                             | Required    | Default         |
+| -------- | -------- | --------------------------------------------------------------------------------------- | ----------- | --------------- |
+| date     | string   | The value of the date.                                                                  | true        |                 |
+| onChange | function | function of the form `(newDate: string) => void`. Performs actions on a new date value. | true        |                 |
+| color    | string   | The color to use from your application's color palette.                                 |             | "primary"       |
+| title    | string   | The text to display to the left of the date.                                            |             | "The date"      |
+| locale   | string   | Locale impacts month and day name formatting.                                           |             | "en-GB"         |
+| icon     | string   | Specifies which icon to use.                                                            |             | calendarOutline |
+| iconSize | string   | Icon size can be "large" or "small".                                                    |             | "small"         |
+| format*  | string   | Date formats                                                                            |             | "yyyy-MM-dd"    |
 
 For TimePicker:
-| Name     | Type     | Description                                                               | Required | Default    |
-| -------- | -------- | ------------------------------------------------------------------------- | -------- | ---------- |
-| time     | string   | The value of the time.                                                    | true     |            |
-| onChange | function | function of the form `(newTime: string) => void`. Updates the time value. | true     |            |
-| color    | string   | The color to use from your application's color palette.                   |          | "primary"  |
-| title    | string   | The text to display to the left of the time.                              |          | "The time" |
-| locale   | string   | Locale impacts month and day name formatting.                             |          | "en-GB"    |
-| icon     | string   | Specifies which icon to use.                                              |          | timeSharp  |
-| iconSize | string   | Icon size can be "large" or "small".                                      |          | "small"    |
-| format*  | string   | Time formats                                                              |          | "HH:mm"    |
+| Name     | Type     | Description                                                                             | Required | Default    |
+| -------- | -------- | --------------------------------------------------------------------------------------- | -------- | ---------- |
+| time     | string   | The value of the time.                                                                  | true     |            |
+| onChange | function | function of the form `(newTime: string) => void`. Performs actions on a new time value. | true     |            |
+| color    | string   | The color to use from your application's color palette.                                 |          | "primary"  |
+| title    | string   | The text to display to the left of the time.                                            |          | "The time" |
+| locale   | string   | Locale impacts month and day name formatting.                                           |          | "en-GB"    |
+| icon     | string   | Specifies which icon to use.                                                            |          | timeSharp  |
+| iconSize | string   | Icon size can be "large" or "small".                                                    |          | "small"    |
+| format*  | string   | Time formats                                                                            |          | "HH:mm"    |
 
 *Follow [here](https://date-fns-interactive.netlify.app/) to set your format.
 
