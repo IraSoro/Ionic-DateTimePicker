@@ -3,8 +3,6 @@ import { timeSharp } from 'ionicons/icons';
 
 import WrappedPicker from './WrappedPicker';
 
-let id = 0;
-
 interface TimeProps {
     time: string;
     onChange: (newValue: string) => void;
@@ -17,13 +15,10 @@ interface TimeProps {
 }
 
 const TimePicker = (props: TimeProps) => {
-    const [ident] = useState((id++).toString());
-
     return (
         <WrappedPicker
             value={props.time}
-            setValue={props.onChange}
-            ID={`InputTime-${ident}`}
+            onChange={props.onChange}
             type={"time"}
             color={props.color ?? "primary"}
             locale={props.locale ?? "en-GB"}

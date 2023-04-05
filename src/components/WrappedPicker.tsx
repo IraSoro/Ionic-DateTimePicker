@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import {
     IonButton,
     IonItem,
@@ -13,10 +13,11 @@ import { format, parseISO } from 'date-fns';
 
 import './WrappedPicker.css';
 
+let id = 0;
+
 interface WrappedProps {
     value: string;
-    setValue: (newValue: string) => void;
-    ID: string;
+    onChange: (newValue: string) => void;
     type: DatetimePresentation;
     color: string;
     locale: string;
@@ -27,19 +28,22 @@ interface WrappedProps {
 }
 
 const WrappedPicker = (props: WrappedProps) => {
+    const [ident] = useState((id++).toString());
+    const [value, setValue] = useState(props.value);
+
     const modalRef = useRef<HTMLIonModalElement>(null);
     const datetimeRef = useRef<null | HTMLIonDatetimeElement>(null);
     const inputRef = useRef<HTMLIonInputElement>(null);
 
     return (
-        <IonItem id={props.ID}>
+        <IonItem id={props.type + ident}>
             <IonLabel color={props.color}>{props.title}</IonLabel>
             <IonIcon slot="end" color={props.color} size={props.sizeIcon} icon={props.icon}></IonIcon>
-            <p>{props.value}</p>
+            <p>{value}</p>
             <IonModal
                 id="choose-datetime-modal"
                 ref={modalRef}
-                trigger={props.ID}
+                trigger={props.type + ident}
             >
                 <IonDatetime
                     ref={datetimeRef}
@@ -50,7 +54,7 @@ const WrappedPicker = (props: WrappedProps) => {
                         if (!e.detail.value) {
                             return;
                         }
-                        props.setValue(format(parseISO(e.detail.value.toString()), props.format));
+                        setValue(format(parseISO(e.detail.value.toString()), props.format));
                     }}
                 >
                     <IonButtons slot="buttons">
@@ -66,6 +70,7 @@ const WrappedPicker = (props: WrappedProps) => {
                             onClick={() => {
                                 datetimeRef.current?.confirm();
                                 modalRef.current?.dismiss(inputRef.current?.value, 'confirm');
+                                props.onChange(value);
                             }}
                         >Confirm</IonButton>
                     </IonButtons>

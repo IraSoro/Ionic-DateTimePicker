@@ -3,8 +3,7 @@ import { DatetimePresentation } from "@ionic/core/components";
 import './WrappedPicker.css';
 interface WrappedProps {
     value: string;
-    setValue: (newValue: string) => void;
-    ID: string;
+    onChange: (newValue: string) => void;
     type: DatetimePresentation;
     color: string;
     locale: string;

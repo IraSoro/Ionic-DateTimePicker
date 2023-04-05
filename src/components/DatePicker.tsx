@@ -1,9 +1,6 @@
-import { useState } from 'react';
 import { calendarClear } from 'ionicons/icons';
 
 import WrappedPicker from './WrappedPicker';
-
-let id = 0;
 
 interface DateProps {
     date: string;
@@ -17,13 +14,10 @@ interface DateProps {
 }
 
 const DatePicker = (props: DateProps) => {
-    const [ident] = useState((id++).toString());
-
     return (
         <WrappedPicker
             value={props.date}
-            setValue={props.onChange}
-            ID={`InputDate-${ident}`}
+            onChange={props.onChange}
             type={"date"}
             color={props.color ?? "primary"}
             locale={props.locale ?? "en-GB"}

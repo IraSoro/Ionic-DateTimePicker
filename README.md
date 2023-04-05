@@ -4,7 +4,7 @@ A simple and reusable component for Ionic (React). Developed on the basis of the
 
 ## Demo
 
-https://irasoro.github.io/DateTimePicker-example/
+<https://irasoro.github.io/DateTimePicker-example/>
 
 ## Installation
 
@@ -13,6 +13,7 @@ npm install @IraSoro/ionic-datetime-picker
 ```
 
 ## API
+
 For DatePicker:
 | Name     | Type     | Description                                                               | Required | Default         |
 | -------- | -------- | ------------------------------------------------------------------------- | -------- | --------------- |
@@ -32,6 +33,7 @@ For TimePicker:
 | onChange | function | function of the form `(newTime: string) => void`. Updates the time value. | true     |            |
 | color    | string   | The color to use from your application's color palette.                   |          | "primary"  |
 | title    | string   | The text to display to the left of the time.                              |          | "The time" |
+| locale   | string   | Locale impacts month and day name formatting.                             |          | "en-GB"    |
 | icon     | string   | Specifies which icon to use.                                              |          | timeSharp  |
 | iconSize | string   | Icon size can be "large" or "small".                                      |          | "small"    |
 | format*  | string   | Time formats                                                              |          | "HH:mm"    |
@@ -64,6 +66,7 @@ Custom style example:
 
 ```js
 import { DatePicker, TimePicker } from '@IraSoro/ionic-datetime-picker';
+import { calendarOutline, contrastOutline } from 'ionicons/icons';
 
 const CustomExample = () => {
   const [date, setDate] = useState("");
@@ -93,5 +96,4 @@ const CustomExample = () => {
     </>
   );
 }
-
 ```
