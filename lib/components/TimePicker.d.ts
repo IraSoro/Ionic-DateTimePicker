@@ -1,5 +1,5 @@
 /// <reference types="react" />
-interface InputTimeProps {
+interface TimeProps {
     time: string;
     setTime: (newValue: string) => void;
     color?: string;
@@ -9,5 +9,5 @@ interface InputTimeProps {
     sizeIcon?: string;
     format?: string;
 }
-declare const InputTime: (props: InputTimeProps) => JSX.Element;
-export default InputTime;
+declare const TimePicker: (props: TimeProps) => JSX.Element;
+export default TimePicker;

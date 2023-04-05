@@ -1,5 +1,5 @@
 /// <reference types="react" />
-interface InputDateProps {
+interface DateProps {
     date: string;
     setDate: (newValue: string) => void;
     color?: string;
@@ -9,5 +9,5 @@ interface InputDateProps {
     sizeIcon?: string;
     format?: string;
 }
-declare const InputDate: (props: InputDateProps) => JSX.Element;
-export default InputDate;
+declare const DatePicker: (props: DateProps) => JSX.Element;
+export default DatePicker;

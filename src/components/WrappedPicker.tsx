@@ -11,7 +11,7 @@ import {
 import { DatetimePresentation } from "@ionic/core/components";
 import { format, parseISO } from 'date-fns';
 
-import './WrappedInput.css';
+import './WrappedPicker.css';
 
 interface WrappedProps {
     value: string;
@@ -26,7 +26,7 @@ interface WrappedProps {
     format: string;
 }
 
-const WrappedInput = (props: WrappedProps) => {
+const WrappedPicker = (props: WrappedProps) => {
     const modalRef = useRef<HTMLIonModalElement>(null);
     const datetimeRef = useRef<null | HTMLIonDatetimeElement>(null);
     const inputRef = useRef<HTMLIonInputElement>(null);
@@ -75,4 +75,4 @@ const WrappedInput = (props: WrappedProps) => {
     );
 }
 
-export default WrappedInput;
+export default WrappedPicker;

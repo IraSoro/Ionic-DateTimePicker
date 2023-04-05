@@ -1,6 +1,6 @@
 /// <reference types="react" />
 import { DatetimePresentation } from "@ionic/core/components";
-import './WrappedInput.css';
+import './WrappedPicker.css';
 interface WrappedProps {
     value: string;
     setValue: (newValue: string) => void;
@@ -13,5 +13,5 @@ interface WrappedProps {
     sizeIcon: string;
     format: string;
 }
-declare const WrappedInput: (props: WrappedProps) => JSX.Element;
-export default WrappedInput;
+declare const WrappedPicker: (props: WrappedProps) => JSX.Element;
+export default WrappedPicker;
