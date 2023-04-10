@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { timeSharp } from 'ionicons/icons';
 
 import WrappedPicker from './WrappedPicker';

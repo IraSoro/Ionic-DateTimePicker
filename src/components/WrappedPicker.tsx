@@ -44,18 +44,17 @@ const WrappedPicker = (props: WrappedProps) => {
                 id="choose-datetime-modal"
                 ref={modalRef}
                 trigger={props.type + ident}
+                onWillDismiss={(ev) => {
+                    const formattedValue = format(parseISO(ev.detail.data?.toString()), props.format);
+                    setValue(formattedValue);
+                    props.onChange(formattedValue);
+                }}
             >
                 <IonDatetime
                     ref={datetimeRef}
                     color={props.color}
                     presentation={props.type}
                     locale={props.locale}
-                    onIonChange={(e) => {
-                        if (!e.detail.value) {
-                            return;
-                        }
-                        setValue(format(parseISO(e.detail.value.toString()), props.format));
-                    }}
                 >
                     <IonButtons slot="buttons">
                         <IonButton
@@ -69,8 +68,7 @@ const WrappedPicker = (props: WrappedProps) => {
                             color={props.color}
                             onClick={() => {
                                 datetimeRef.current?.confirm();
-                                modalRef.current?.dismiss(inputRef.current?.value, 'confirm');
-                                props.onChange(value);
+                                modalRef.current?.dismiss(datetimeRef.current?.value, 'confirm');
                             }}
                         >Confirm</IonButton>
                     </IonButtons>
